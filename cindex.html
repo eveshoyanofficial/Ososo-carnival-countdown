@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Ososo Carnival 2025</title>
+    <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.25rem;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+        /* Countdown Timer Styles */
+        .countdown-section {
+            background-color: #f0f0f0;
+            color: royalblue;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 60px; /* Account for fixed header */
+        }
+        .countdown-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1.5rem;
+            min-width: 100px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .hero {
+            height: 100vh;
+            background: url("https://cdn.guardian.ng/wp-content/uploads/2017/12/Ososo-culture.jpg") no-repeat center center fixed;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Creates parallax effect */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 0 1rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0 0 1rem 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+        .hero p {
+            font-size: 1.5rem;
+            margin: 1rem 0 2rem 0;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+            max-width: 600px;
+        }
+        .cta-button {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+        .form-section {
+            padding: 4rem 2rem;
+            background: white;
+            text-align: center;
+        }
+        .form-section h2 {
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            color: #333;
+        }
+        .form-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        .email-form {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .email-form input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .email-form input:focus {
+            border-color: #ff6b35;
+            outline: none;
+        }
+        .email-form button {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        .email-form button:hover {
+            background: #e55a2b;
+        }
+        .carousel-section {
+            padding: 4rem 2rem;
+            background: #f0f0f0;
+            text-align: center;
+        }
+        .carousel-section h2 {
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #333;
+        }
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            animation: slide 16s infinite; /* 4s per image */
+        }
+        .carousel img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        @keyframes slide {
+            0%, 25% { transform: translateX(0); }
+            25.1%, 50% { transform: translateX(-100%); }
+            50.1%, 75% { transform: translateX(-200%); }
+            75.1%, 100% { transform: translateX(-300%); }
+        }
+        @media (max-width: 768px) {
+            .countdown-title { font-size: 1.5rem; }
+            .countdown-box { padding: 1rem; min-width: 80px; }
+            .countdown-number { font-size: 2rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1.2rem; }
+            .email-form { flex-direction: column; }
+            .carousel img { height: 250px; }
+            .carousel { animation-duration: 20s; }
+            .form-section h2, .carousel-section h2 { font-size: 2rem; }
+        }
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .social-links a:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+        .social-links i {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🎉 Ososo Carnival 2025</h1>
+    </header>
+
+    <!-- Countdown Timer Section -->
+    <section class="countdown-section">
+        <h2 class="countdown-title">Countdown to Ososo Carnival 2025</h2>
+        <div class="countdown-container">
+            <div class="countdown-box">
+                <span id="days" class="countdown-number">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-box">
+                <span id="hours" class="countdown-number">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-box">
+                <span id="minutes" class="countdown-number">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-box">
+                <span id="seconds" class="countdown-number">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero">
+        <h1>Join us for the most colorful celebration of the year!</h1>
+        <p>Music, dance, and culture in the heart of Ososo.</p>
+        <a href="#form" class="cta-button">Get Updates</a>
+    </section>
+
+    <section class="carousel-section">
+        <h2>Relive the Magic: Previous Years' Ososo Carnival</h2>
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="https://greenbreporters.com/wp-content/uploads/2017/12/Ososo-1-1.jpg" alt="Ososo Carnival 2017: Vibrant procession in Edo State">
+                <img src="https://guardian.ng/wp-content/uploads/2020/01/OSOSO.jpg" alt="Ososo Carnival 2020: Dancers in colorful feathered costumes">
+                <img src="https://i.ytimg.com/vi/yL8FH6R14M4/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGH8gPCgTMA8=&rs=AOn4CLAwrr8npNOy13DKfM_ZR07b3Aksng" alt="Ososo Carnival Street Party: Energetic performers in yellow and orange">
+                <img src="https://cdn.guardian.ng/wp-content/uploads/2020/01/OSOSO-3.jpg" alt="Ososo Carnival 2020: Group in elaborate purple feathered outfits">
+            </div>
+        </div>
+    </section>
+
+    <section id="form" class="form-section">
+        <h2>Stay Updated!</h2>
+        <p>Get notified when tickets go on sale</p>
+        <form class="email-form" action="/submit" method="post">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit">Notify Me</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Follow us for updates:</p>
+        <div class="social-links">
+            <a href="https://facebook.com/OsosoCarnival" target="_blank"><i class="fab fa-facebook-f"></i>Facebook</a>
+            <a href="https://instagram.com/OsosoCarnival" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+            <a href="https://x.com/OsosoCarnival" target="_blank"><i class="fab fa-x-twitter"></i>Twitter</a>
+            <a href="https://tiktok.com/@OsosoCarnival" target="_blank"><i class="fab fa-tiktok"></i>TikTok</a>
+        </div>
+        <p>&copy; 2025 Ososo Carnival. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Countdown Timer JavaScript
+        function updateCountdown() {
+            const eventDate = new Date("December 20, 2025 18:00:00").getTime();
+            const now = new Date().getTime();
+            const timeLeft = eventDate - now;
+
+            if (timeLeft < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        
+        // Initial call to display immediately
+        updateCountdown();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
